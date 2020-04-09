@@ -31,16 +31,19 @@ app.listen(3000);*/
 const fs=require('fs');
 const fileName="target.txt";
 
+const errHandler=(err)=>console.log(err);
+const DataHandler=data=>console.log(data.toString());
+
+//16 ASZINKRON
+fs.readFile(fileName, (err,data) => {
+    if(err) errHandler(err);
+    DataHandler(data);
+});
+
+/*17 SZINKRON
 const data=fs.readFileSync(fileName);
-console.log(data.toString());
+console.log(data.toString());*/
 
 //fs.watch(fileName,()=>console.log('File changed!'));
-/*16 ASZINKRON
-fs.readFile(fileName, (err,data) => {
-    if(err){
-        console.log(err);
-    }
-    console.log(data.toString());
-});*/
 
 console.log("Node js async programming...?");
